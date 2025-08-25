@@ -64,7 +64,8 @@ export function Chat({
     experimental_throttle: 100,
     generateId: generateUUID,
     transport: new DefaultChatTransport({
-      api: '/api/chat',
+      // ✅ Updated to point to your Render backend using env var
+      api: `${process.env.NEXT_PUBLIC_API_BASE}/chat`,
       fetch: fetchWithErrorHandlers,
       prepareSendMessagesRequest({ messages, id, body }) {
         return {
@@ -186,3 +187,4 @@ export function Chat({
     </>
   );
 }
+
